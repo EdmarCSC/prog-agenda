@@ -1,0 +1,100 @@
+unit uConsultaFornecedor;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.Buttons, Data.DB, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, Vcl.DBCtrls;
+
+type
+  TfrmConsultaFornecedor = class(TForm)
+    bvCabecalhoConsultaFron: TBevel;
+    Label1: TLabel;
+    rdConsultaFornecedor: TRadioGroup;
+    pgConsultaFornecedor: TPageControl;
+    tabConsultaFornecedor: TTabSheet;
+    tabDetalheFornecedor: TTabSheet;
+    SpeedButton1: TSpeedButton;
+    spConsultaDeFornecedor_Voltar: TSpeedButton;
+    Bevel1: TBevel;
+    DBGrid1: TDBGrid;
+    spConsultaDeFornecedor_Imprimir: TSpeedButton;
+    Label2: TLabel;
+    fdQueryConsultaFornecedor: TFDQuery;
+    dtConsultaFonecedor: TDataSource;
+    dbNavConsultaCliente: TDBNavigator;
+    Button1: TButton;
+    editConsultaFornecedor: TEdit;
+    procedure Button1Click(Sender: TObject);
+    procedure rdConsultaFornecedorClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+      itemPesqFornecedor: string;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmConsultaFornecedor: TfrmConsultaFornecedor;
+
+implementation
+
+{$R *.dfm}
+
+uses uDT_Conexao;
+
+procedure TfrmConsultaFornecedor.Button1Click(Sender: TObject);
+begin
+        fdQueryConsultaFornecedor.sql.Clear;
+        fdQueryConsultaFornecedor.sql.Add('Commit');
+        pgConsultaFornecedor.ActivePage := tabDetalheFornecedor;
+        fdQueryConsultaFornecedor.sql.Clear;
+        fdQueryConsultaFornecedor.sql.Add('select * from tblclientes');
+        fdQueryConsultaFornecedor.Open;
+end;
+
+procedure TfrmConsultaFornecedor.FormShow(Sender: TObject);
+begin
+
+        // Setando PageControl na a abertura do formulrio (primeira página).
+        pgConsultaFornecedor.ActivePage := tabConsultaFornecedor;
+
+        // Condição 'se' o dataset estiver aberto, é instruido a fechar.
+        if fdQueryConsultaFornecedor.Active = True then
+           fdQueryConsultaFornecedor.Active := False;
+end;
+
+procedure TfrmConsultaFornecedor.rdConsultaFornecedorClick(Sender: TObject);
+begin
+       // Condição caso para estipular por qual campo da tabela será execultada a
+    //  a consulta com o Edit.
+    case rdConsultaFornecedor.ItemIndex of
+        0: itemPesqFornecedor := 'CODFornecedor';
+        1: itemPesqFornecedor := 'NOMEFornecedor';
+        2: itemPesqFornecedor := 'CPF';
+        3: itemPesqFornecedor := 'CNPJ';
+    end;
+end;
+
+procedure TfrmConsultaFornecedor.SpeedButton1Click(Sender: TObject);
+var
+    // Vadiábel que recebera a instrução SQL para cunsulta no DB.
+    pesq: string;
+begin
+      //  variavel recebendo instrução que selecionará a pesquisa feita pelo usuário no Edit
+      pesq:= 'select * from tblFornecedor where'+chr(39)+itemPesqFornecedor+chr(39)+'like'+chr(39)+editConsultaFornecedor.Text+'%'+chr(39);
+
+      // Inserindo SQL no DataSet para pesquisa.
+      fdQueryConsultaFornecedor.SQL.Clear;
+      fdQueryConsultaFornecedor.SQL.Add(pesq);
+      fdQueryConsultaFornecedor.Open;
+      pgConsultaFornecedor.ActivePage := tabDetalheFornecedor;
+
+end;
+end.

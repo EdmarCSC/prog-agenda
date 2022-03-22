@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:export-ydpi="96"
+   inkscape:export-xdpi="96"
+   inkscape:export-filename="C:\sisD_Televendas\img_Icones\DTelevendas.png"
+   id="svg16"
+   version="1.1"
+   viewBox="0 0 210 297"
+   height="297mm"
+   width="210mm"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="DTelevendas.svg">
+  <defs
+     id="defs10">
+    <rect
+       x="32.339613"
+       y="40.892238"
+       width="40.090429"
+       height="53.186636"
+       id="rect48" />
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter5628">
+      <feColorMatrix
+         values="6.84731 -3.05389 -3.05389 0 -8.19277 -3.05389 6.84731 -3.05389 0 -8.19277 -3.05389 -3.05389 6.84731 0 -8.19277 0 0 0 1 0 "
+         id="feColorMatrix5626"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix5630" />
+      <feColorMatrix
+         result="fbSourceGraphic"
+         id="feColorMatrix5632"
+         values="6.84731 -3.05389 -3.05389 0 -8.19277 -3.05389 6.84731 -3.05389 0 -8.19277 -3.05389 -3.05389 6.84731 0 -8.19277 0 0 0 1 0 "
+         in="fbSourceGraphic" />
+      <feColorMatrix
+         id="feColorMatrix1527"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         in="fbSourceGraphic"
+         result="fbSourceGraphicAlpha" />
+      <feFlood
+         in="fbSourceGraphic"
+         result="flood"
+         flood-color="rgb(151,62,17)"
+         flood-opacity="0.811765"
+         id="feFlood1529" />
+      <feComposite
+         result="composite1"
+         operator="in"
+         in="flood"
+         id="feComposite1531"
+         in2="fbSourceGraphic" />
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="0"
+         in="composite1"
+         id="feGaussianBlur1533" />
+      <feOffset
+         result="offset"
+         dy="-0.3"
+         dx="2"
+         id="feOffset1535" />
+      <feComposite
+         result="composite2"
+         operator="over"
+         in="fbSourceGraphic"
+         id="feComposite1537"
+         in2="offset" />
+    </filter>
+    <filter
+       id="filter5628-9"
+       inkscape:label="Brilliance"
+       style="color-interpolation-filters:sRGB">
+      <feColorMatrix
+         result="fbSourceGraphic"
+         id="feColorMatrix5626-3"
+         values="6.84731 -3.05389 -3.05389 0 -8.19277 -3.05389 6.84731 -3.05389 0 -8.19277 -3.05389 -3.05389 6.84731 0 -8.19277 0 0 0 1 0 " />
+      <feColorMatrix
+         id="feColorMatrix5630-0"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         in="fbSourceGraphic"
+         result="fbSourceGraphicAlpha" />
+      <feColorMatrix
+         in="fbSourceGraphic"
+         values="6.84731 -3.05389 -3.05389 0 -8.19277 -3.05389 6.84731 -3.05389 0 -8.19277 -3.05389 -3.05389 6.84731 0 -8.19277 0 0 0 1 0 "
+         id="feColorMatrix5632-9" />
+    </filter>
+    <filter
+       height="1.0419982"
+       y="-0.0209991"
+       width="1.0106812"
+       x="-0.005340586"
+       id="filter1559"
+       style="color-interpolation-filters:sRGB"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur1561"
+         stdDeviation="0.31144244"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       height="1.0125254"
+       y="-0.0062626752"
+       width="1.0056609"
+       x="-0.0028304382"
+       id="filter1783"
+       style="color-interpolation-filters:sRGB"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur1785"
+         stdDeviation="0.16540238"
+         inkscape:collect="always" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="401.81651"
+     inkscape:cy="575.29697"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1518"
+     inkscape:window-height="861"
+     inkscape:window-x="66"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata13">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     style="display:inline;opacity:0.712871;filter:url(#filter1783)"
+     inkscape:label="Fundo"
+     id="layer3"
+     inkscape:groupmode="layer">
+    <path
+       sodipodi:nodetypes="ccccccc"
+       d="M 31.103464,92.407519 C 100.72215,74.357285 126.51351,147.80882 171.35232,107.98482 v 34.13423 l -0.29468,8.83156 -36.89902,0.32991 -103.055156,1.60362 z"
+       style="fill:#00d4aa;fill-opacity:1;stroke:#000000;stroke-width:0.267808"
+       id="rect129" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="FundoOnda"
+     style="display:inline;opacity:0.856436;filter:url(#filter1559)">
+    <path
+       id="rect53"
+       style="fill:#165044;fill-opacity:1;stroke-width:0.299141"
+       d="m 31.420103,133.09134 c -0.316639,19.7928 0.681733,14.39718 -0.316639,19.7928 67.281966,0.33018 85.359006,0.78843 139.954176,0.4719 0.0274,-8.83156 -0.0767,-17.2263 -0.0767,-17.2263 -52.21232,-38.596635 -84.143148,-4.20233 -139.560887,-3.0384 z"
+       sodipodi:nodetypes="cccsc" />
+  </g>
+  <g
+     inkscape:label="Letreiro"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline;opacity:1;mix-blend-mode:normal">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.1521px;line-height:1.25;font-family:Impact;-inkscape-font-specification:'Impact, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#0b2822;fill-opacity:1;stroke:none;stroke-width:0.728805;filter:url(#filter5628)"
+       x="41.376526"
+       y="122.21788"
+       id="text20"
+       transform="matrix(0.80469897,0,0,1.2664897,-4.0574593,-1.7770774)"><tspan
+         sodipodi:role="line"
+         id="tspan18"
+         x="41.376526"
+         y="122.21788"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.1521px;font-family:Impact;-inkscape-font-specification:'Impact, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#0b2822;stroke-width:0.728805"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:59.4065px;font-family:Impact;-inkscape-font-specification:'Impact, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#0b2822;stroke-width:0.728805"
+   id="tspan42">D</tspan>'Televendas</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text46"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect48);fill:#000000;fill-opacity:1;stroke:none;" />
+  </g>
+</svg>

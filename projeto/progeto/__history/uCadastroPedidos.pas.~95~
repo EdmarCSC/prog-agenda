@@ -1,0 +1,118 @@
+unit uCadastroPedidos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls,
+  Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, FireDAC.UI.Intf, FireDAC.VCLUI.Wait,
+  FireDAC.Phys.FBDef, FireDAC.Phys, FireDAC.Phys.IBBase, FireDAC.Phys.FB,
+  FireDAC.Comp.UI, Datasnap.DBClient, Datasnap.Provider;
+
+type
+  TfrmCadastroPedidos = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    spBt_NovoPedido: TSpeedButton;
+    spBt_CancelarPedido: TSpeedButton;
+    spBt_SalvarPedidp: TSpeedButton;
+    Label3: TLabel;
+    Label4: TLabel;
+    fdQueryCadastroPedidos: TFDQuery;
+    fdQueryItemPedidos: TFDQuery;
+    fdTableCadastroPedidos: TFDTable;
+    dtItemPedidos: TDataSource;
+    fdQueryCadastroPedidosCODPEDIDO: TIntegerField;
+    fdQueryCadastroPedidosNOMECLIENTE: TStringField;
+    fdQueryCadastroPedidosDTCADASTRO: TStringField;
+    fdQueryCadastroPedidosCONTATO: TStringField;
+    Label5: TLabel;
+    fdTableItem_Pedidos: TFDTable;
+    fdTableCadastroPedidosCODPEDIDO: TIntegerField;
+    fdTableCadastroPedidosNOMECLIENTE: TStringField;
+    fdTableCadastroPedidosDTCADASTRO: TStringField;
+    fdTableCadastroPedidosCONTATO: TStringField;
+    dbGridItem_Pedido: TDBGrid;
+    dbEditCodigoClientePedido: TDBEdit;
+    dtCadastroPedidos: TDataSource;
+    dbEditNomeClientePedido: TDBEdit;
+    dbEditContatoClientePedido: TDBEdit;
+    fdTableItem_PedidosCODPEDIDO: TIntegerField;
+    fdTableItem_PedidosDESCRICAO: TStringField;
+    fdTableItem_PedidosQUANTIDADE: TIntegerField;
+    fdTableItem_PedidosVALOR: TStringField;
+    fdTableItem_PedidosCODPRODUTO: TIntegerField;
+    procedure FormShow(Sender: TObject);
+    procedure spBt_NovoPedidoClick(Sender: TObject);
+    procedure spBt_SalvarPedidpClick(Sender: TObject);
+    procedure dbEditContatoClientePedidoExit(Sender: TObject);
+    procedure spBt_CancelarPedidoClick(Sender: TObject);
+  private
+    { Private declarations }
+
+
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCadastroPedidos: TfrmCadastroPedidos;
+
+implementation
+
+{$R *.dfm}
+
+uses uDT_Conexao;
+
+procedure TfrmCadastroPedidos.dbEditContatoClientePedidoExit(Sender: TObject);
+begin
+      dbEditCodigoClientePedido.Text:= IntToStr(fdTableCadastroPedidosCODPEDIDO.Value);
+end;
+
+procedure TfrmCadastroPedidos.FormShow(Sender: TObject);
+begin
+         // Condição para fechar a tabela se a mesma estivar aberta ao abrir o formúlario.
+      if fdQueryCadastroPedidos.Active = True then
+          fdQueryCadastroPedidos.Active := False;
+end;
+
+procedure TfrmCadastroPedidos.spBt_CancelarPedidoClick(Sender: TObject);
+begin
+      // Enviando dados para tbl Cadastro de pedidos.
+      fdTableCadastroPedidos.Post;
+
+      // Abrindo tblItem pedidos.
+      fdTableItem_Pedidos.Open;
+
+     // fdTableCadastroPedidos.Append;
+      fdTableItem_Pedidos.Edit;
+      fdTableItem_Pedidos.Append;
+
+end;
+
+procedure TfrmCadastroPedidos.spBt_NovoPedidoClick(Sender: TObject);
+begin
+    // Abrindo tabela Cadstro de Pedidos.
+    fdTableCadastroPedidos.Open;
+
+    //Preparando a tabela para receber dados.
+    fdTableCadastroPedidos.Append;
+    fdTableCadastroPedidos.Edit;
+
+
+    // Setando o campo dbEditNomeClientePedido.
+    dbEditNomeClientePedido.SetFocus;
+
+end;
+
+procedure TfrmCadastroPedidos.spBt_SalvarPedidpClick(Sender: TObject);
+begin
+      //fdTableCadastroPedidos.Post;
+      fdTableItem_Pedidos.Post;
+
+end;
+
+end.

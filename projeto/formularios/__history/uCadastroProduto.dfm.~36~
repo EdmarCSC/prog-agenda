@@ -1,0 +1,413 @@
+object frmCadastroProduto: TfrmCadastroProduto
+  Left = 0
+  Top = 0
+  Caption = 'Cadastro produto'
+  ClientHeight = 511
+  ClientWidth = 914
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label4: TLabel
+    Left = 140
+    Top = 162
+    Width = 56
+    Height = 13
+    Caption = 'C'#243'digo EAN'
+    FocusControl = dbEdit_EAN
+  end
+  object Label5: TLabel
+    Left = 282
+    Top = 162
+    Width = 46
+    Height = 13
+    Caption = 'Descri'#231#227'o'
+    FocusControl = dbEdit_Descricao
+  end
+  object Label6: TLabel
+    Left = 140
+    Top = 218
+    Width = 55
+    Height = 13
+    Caption = 'Fornecedor'
+    FocusControl = dbEdit_Fornecedor
+  end
+  object Label7: TLabel
+    Left = 423
+    Top = 218
+    Width = 91
+    Height = 13
+    Caption = 'Data de fabrica'#231#227'o'
+    FocusControl = dbEdit_DataFabricacao
+  end
+  object Label8: TLabel
+    Left = 564
+    Top = 218
+    Width = 81
+    Height = 13
+    Caption = 'Data de validade'
+    FocusControl = dbEdit_DataValidade
+  end
+  object Label9: TLabel
+    Left = 140
+    Top = 274
+    Width = 29
+    Height = 13
+    Caption = 'Marca'
+    FocusControl = dbEdit_ValorUnitario
+  end
+  object Label10: TLabel
+    Left = 291
+    Top = 274
+    Width = 23
+    Height = 13
+    Caption = 'Peso'
+    FocusControl = dbEdit_Peso
+  end
+  object Label11: TLabel
+    Left = 444
+    Top = 274
+    Width = 29
+    Height = 13
+    Caption = 'Marca'
+    FocusControl = dbEdit_Marca
+  end
+  object Label12: TLabel
+    Left = 140
+    Top = 327
+    Width = 34
+    Height = 13
+    Caption = 'Modelo'
+    FocusControl = dbEdit_Modelo
+  end
+  object Label13: TLabel
+    Left = 492
+    Top = 327
+    Width = 17
+    Height = 13
+    Caption = 'Cor'
+    FocusControl = dbEdit_Cor
+  end
+  object Label14: TLabel
+    Left = 665
+    Top = 327
+    Width = 12
+    Height = 13
+    Caption = 'Kit'
+    FocusControl = DBEdit14
+  end
+  object Label1: TLabel
+    Left = 282
+    Top = 70
+    Width = 360
+    Height = 42
+    Caption = 'Cadastro de produto'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -37
+    Font.Name = 'Microsoft Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object spBt_CadastroNovo: TSpeedButton
+    Left = 732
+    Top = 178
+    Width = 49
+    Height = 37
+    Caption = 'Novo'
+    OnClick = spBt_CadastroNovoClick
+  end
+  object spBt_CadastroCancelar: TSpeedButton
+    Left = 732
+    Top = 253
+    Width = 49
+    Height = 37
+    Caption = 'Cancelar'
+    OnClick = spBt_CadastroCancelarClick
+  end
+  object spBt_CadastroProdutoSalvar: TSpeedButton
+    Left = 732
+    Top = 327
+    Width = 49
+    Height = 37
+    Caption = 'Salvar'
+    OnClick = spBt_CadastroProdutoSalvarClick
+  end
+  object dbEdit_EAN: TDBEdit
+    Left = 140
+    Top = 178
+    Width = 100
+    Height = 21
+    DataField = 'CODEAN'
+    DataSource = dtCadastroProduto
+    TabOrder = 0
+  end
+  object dbEdit_Descricao: TDBEdit
+    Left = 282
+    Top = 178
+    Width = 400
+    Height = 21
+    DataField = 'DESCRICAO'
+    DataSource = dtCadastroProduto
+    TabOrder = 1
+  end
+  object dbEdit_Fornecedor: TDBEdit
+    Left = 140
+    Top = 234
+    Width = 239
+    Height = 21
+    DataField = 'FORNECEDOR'
+    DataSource = dtCadastroProduto
+    TabOrder = 2
+  end
+  object dbEdit_DataFabricacao: TDBEdit
+    Left = 423
+    Top = 237
+    Width = 100
+    Height = 21
+    DataField = 'DTFABRICAO'
+    DataSource = dtCadastroProduto
+    TabOrder = 3
+  end
+  object dbEdit_DataValidade: TDBEdit
+    Left = 564
+    Top = 234
+    Width = 118
+    Height = 21
+    DataField = 'DTVALIDADE'
+    DataSource = dtCadastroProduto
+    TabOrder = 4
+  end
+  object dbEdit_ValorUnitario: TDBEdit
+    Left = 140
+    Top = 290
+    Width = 100
+    Height = 21
+    DataField = 'VALOR'
+    DataSource = dtCadastroProduto
+    TabOrder = 5
+  end
+  object dbEdit_Peso: TDBEdit
+    Left = 291
+    Top = 290
+    Width = 100
+    Height = 21
+    DataField = 'PESO'
+    DataSource = dtCadastroProduto
+    TabOrder = 6
+  end
+  object dbEdit_Marca: TDBEdit
+    Left = 444
+    Top = 290
+    Width = 238
+    Height = 21
+    DataField = 'MARCA'
+    DataSource = dtCadastroProduto
+    TabOrder = 7
+  end
+  object dbEdit_Modelo: TDBEdit
+    Left = 140
+    Top = 343
+    Width = 300
+    Height = 21
+    DataField = 'MODELO'
+    DataSource = dtCadastroProduto
+    TabOrder = 8
+  end
+  object dbEdit_Cor: TDBEdit
+    Left = 492
+    Top = 343
+    Width = 121
+    Height = 21
+    DataField = 'COR'
+    DataSource = dtCadastroProduto
+    TabOrder = 9
+  end
+  object DBEdit14: TDBEdit
+    Left = 665
+    Top = 343
+    Width = 17
+    Height = 21
+    DataField = 'KIT'
+    DataSource = dtCadastroProduto
+    TabOrder = 10
+  end
+  object pHeader_C_Produto: TPanel
+    Left = 0
+    Top = 0
+    Width = 914
+    Height = 89
+    Align = alTop
+    BevelInner = bvSpace
+    BevelKind = bkTile
+    Color = 8421440
+    ParentBackground = False
+    TabOrder = 11
+  end
+  object pFooter_C_Produto: TPanel
+    Left = 0
+    Top = 456
+    Width = 914
+    Height = 55
+    Align = alBottom
+    BevelInner = bvSpace
+    BevelKind = bkTile
+    Color = 8421440
+    ParentBackground = False
+    TabOrder = 12
+  end
+  object fdQueryCadastroProduto: TFDQuery
+    Connection = dtmConexao.FD_Conexao
+    SQL.Strings = (
+      'select * from tblProduto')
+    Left = 768
+    Top = 24
+    object fdQueryCadastroProdutoDTCADASTRO: TDateField
+      FieldName = 'DTCADASTRO'
+      Origin = 'DTCADASTRO'
+    end
+    object fdQueryCadastroProdutoCODPRODUTO: TIntegerField
+      FieldName = 'CODPRODUTO'
+      Origin = 'CODPRODUTO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object fdQueryCadastroProdutoCODEAN: TIntegerField
+      FieldName = 'CODEAN'
+      Origin = 'CODEAN'
+      Required = True
+    end
+    object fdQueryCadastroProdutoDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Required = True
+      Size = 100
+    end
+    object fdQueryCadastroProdutoFORNECEDOR: TStringField
+      FieldName = 'FORNECEDOR'
+      Origin = 'FORNECEDOR'
+      Required = True
+      Size = 100
+    end
+    object fdQueryCadastroProdutoDTFABRICACAO: TDateField
+      FieldName = 'DTFABRICACAO'
+      Origin = 'DTFABRICACAO'
+    end
+    object fdQueryCadastroProdutoDTVALIDADE: TDateField
+      FieldName = 'DTVALIDADE'
+      Origin = 'DTVALIDADE'
+    end
+    object fdQueryCadastroProdutoVALOR: TStringField
+      FieldName = 'VALOR'
+      Origin = 'VALOR'
+      Size = 30
+    end
+    object fdQueryCadastroProdutoPESO: TStringField
+      FieldName = 'PESO'
+      Origin = 'PESO'
+      Size = 30
+    end
+    object fdQueryCadastroProdutoMARCA: TStringField
+      FieldName = 'MARCA'
+      Origin = 'MARCA'
+      Size = 50
+    end
+    object fdQueryCadastroProdutoMODELO: TStringField
+      FieldName = 'MODELO'
+      Origin = 'MODELO'
+      Size = 50
+    end
+    object fdQueryCadastroProdutoCOR: TStringField
+      FieldName = 'COR'
+      Origin = 'COR'
+    end
+    object fdQueryCadastroProdutoKIT: TStringField
+      FieldName = 'KIT'
+      Origin = 'KIT'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object dtCadastroProduto: TDataSource
+    DataSet = fdTableCadastroProduto
+    Left = 640
+    Top = 24
+  end
+  object fdTableCadastroProduto: TFDTable
+    CachedUpdates = True
+    IndexFieldNames = 'CODPRODUTO'
+    Connection = dtmConexao.FD_Conexao
+    UpdateOptions.UpdateTableName = 'TBLPRODUTO'
+    TableName = 'TBLPRODUTO'
+    Left = 360
+    Top = 24
+    object fdTableCadastroProdutoDTCADASTRO: TStringField
+      FieldName = 'DTCADASTRO'
+      Origin = 'DTCADASTRO'
+      EditMask = '!99/99/00;1;_'
+    end
+    object fdTableCadastroProdutoDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Required = True
+      Size = 100
+    end
+    object fdTableCadastroProdutoFORNECEDOR: TStringField
+      FieldName = 'FORNECEDOR'
+      Origin = 'FORNECEDOR'
+      Required = True
+      Size = 100
+    end
+    object fdTableCadastroProdutoPESO: TStringField
+      FieldName = 'PESO'
+      Origin = 'PESO'
+      EditMask = '!Kg: 000.00;1;_'
+      Size = 30
+    end
+    object fdTableCadastroProdutoMARCA: TStringField
+      FieldName = 'MARCA'
+      Origin = 'MARCA'
+      Size = 50
+    end
+    object fdTableCadastroProdutoMODELO: TStringField
+      FieldName = 'MODELO'
+      Origin = 'MODELO'
+      Size = 50
+    end
+    object fdTableCadastroProdutoCOR: TStringField
+      FieldName = 'COR'
+      Origin = 'COR'
+    end
+    object fdTableCadastroProdutoKIT: TStringField
+      FieldName = 'KIT'
+      Origin = 'KIT'
+      FixedChar = True
+      Size = 1
+    end
+    object fdTableCadastroProdutoVALOR: TSingleField
+      FieldName = 'VALOR'
+      Origin = 'VALOR'
+      Required = True
+    end
+    object fdTableCadastroProdutoDTFABRICAO: TStringField
+      FieldName = 'DTFABRICAO'
+      Origin = 'DTFABRICAO'
+      EditMask = '!99/99/00;1;_'
+    end
+    object fdTableCadastroProdutoDTVALIDADE: TStringField
+      FieldName = 'DTVALIDADE'
+      Origin = 'DTVALIDADE'
+      EditMask = '!99/99/00;1;_'
+    end
+    object fdTableCadastroProdutoCODEAN: TIntegerField
+      FieldName = 'CODEAN'
+      Origin = 'CODEAN'
+      Required = True
+    end
+  end
+end

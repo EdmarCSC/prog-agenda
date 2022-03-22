@@ -1,0 +1,146 @@
+unit uConsultaUsuario;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Buttons, Vcl.StdCtrls,
+  Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TfrmConsultaUsuario = class(TForm)
+    Bevel1: TBevel;
+    Label1: TLabel;
+    pgConsultaUsuario: TPageControl;
+    tabConsultaUsuario: TTabSheet;
+    tabDetalheConsulta: TTabSheet;
+    rdConsultaUsuario: TRadioGroup;
+    editConsultaUsuario: TEdit;
+    SpeedButton1: TSpeedButton;
+    fdQueryConsultaUsuario: TFDQuery;
+    dtConsultaUsuario: TDataSource;
+    Label2: TLabel;
+    dbDetalheCulsulta: TDBGrid;
+    spConsultaDeFornecedor_Voltar: TSpeedButton;
+    Bevel2: TBevel;
+    dbNavConsultaCliente: TDBNavigator;
+    spConsultaDeFornecedor_Imprimir: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    Bevel3: TBevel;
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure editConsultaUsuarioChange(Sender: TObject);
+    procedure rdConsultaUsuarioClick(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure spConsultaDeFornecedor_VoltarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+    itemPesqCliente, pesq: string;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmConsultaUsuario: TfrmConsultaUsuario;
+
+implementation
+
+{$R *.dfm}
+
+uses uDT_Conexao;
+
+procedure TfrmConsultaUsuario.editConsultaUsuarioChange(Sender: TObject);
+begin
+        //:= StrToInt(editConsulta.Text);
+
+               // Condição para verificar se a pesquisa será realizada por um valor integer ou string.
+        if rdConsultaUsuario.ItemIndex = 0 or  2 or  3 then
+          begin   // integer
+
+            // Inserindo SQL no DataSet para pesquisa.
+            fdQueryConsultaUsuario.Close;
+            fdQueryConsultaUsuario.SQL.Clear;
+             pesq := 'select * from TBLUSUARIO where '+itemPesqCliente+' = '+chr(39)+editConsultaUsuario.Text+chr(39);
+
+            //  variavel recebendo instrução que selecionará a pesquisa feita pelo usuário no Edit.
+            fdQueryConsultaUsuario.SQL.Add(pesq);
+            fdQueryConsultaUsuario.Open;
+          end
+        else
+          begin   // string
+
+             // Inserindo SQL no DataSet para pesquisa.
+            fdQueryConsultaUsuario.Close;
+            fdQueryConsultaUsuario.SQL.Clear;
+            pesq := 'select * from TBLUSUARIO where '+itemPesqCliente+' like '+chr(39)+editConsultaUsuario.Text+'%'+chr(39);
+
+            //  variavel recebendo instrução que selecionará a pesquisa feita pelo usuário no Edit.
+            fdQueryConsultaUsuario.SQL.Add(pesq);
+            fdQueryConsultaUsuario.Open;
+          end;
+end;
+
+procedure TfrmConsultaUsuario.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+          // Lipando EditConsulta.
+          editConsultaUsuario.Clear;
+end;
+
+procedure TfrmConsultaUsuario.FormShow(Sender: TObject);
+begin
+        // Inserimdo o valor 0 no radioGroup na abertura do fomulario.
+           rdConsultaUsuario.ItemIndex := 0;
+
+        // Setando PageControl na primeira página.
+           pgConsultaUsuario.ActivePage := tabConsultaUsuario;
+
+        // Condição 'se' o dataset estiver aberto, é instruido a fechar.
+        if fdQueryConsultaUsuario.Active = False then
+           fdQueryConsultaUsuario.Active := True;
+
+end;
+procedure TfrmConsultaUsuario.rdConsultaUsuarioClick(Sender: TObject);
+begin
+
+    // Condição caso para estipular por qual campo da tabela será execultada a
+    //  a consulta com o Edit.
+    case rdConsultaUsuario.ItemIndex of
+        0: itemPesqCliente := 'CODUSUARIO';
+        1: itemPesqCliente := 'NOMEUSUARIO';
+        2: itemPesqCliente := 'LOGIN';
+    end;
+end;
+
+procedure TfrmConsultaUsuario.spConsultaDeFornecedor_VoltarClick(
+  Sender: TObject);
+begin
+          fdQueryConsultaUsuario.Close;
+          pgConsultaUsuario.ActivePage := tabConsultaUsuario;
+          editConsultaUsuario.Clear;
+end;
+
+procedure TfrmConsultaUsuario.SpeedButton1Click(Sender: TObject);
+begin
+          // Ativando TabDetalhe para apresentar as informações de pesquisa.
+      pgConsultaUsuario.ActivePage := tabDetalheConsulta;
+
+end;
+
+procedure TfrmConsultaUsuario.SpeedButton2Click(Sender: TObject);
+begin
+            fdQueryConsultaUsuario.Close;
+            fdQueryConsultaUsuario.sql.Clear;
+            fdQueryConsultaUsuario.sql.Add('Commit');
+            pgConsultaUsuario.ActivePage := tabDetalheConsulta;
+            fdQueryConsultaUsuario.sql.Clear;
+            fdQueryConsultaUsuario.sql.Add('select * from tblusuario');
+            fdQueryConsultaUsuario.Open;
+
+end;
+
+end.

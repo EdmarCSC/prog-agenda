@@ -1,0 +1,205 @@
+object frmConsultaUsuario: TfrmConsultaUsuario
+  Left = 0
+  Top = 0
+  Caption = 'Cadastro de usu'#225'rio'
+  ClientHeight = 511
+  ClientWidth = 914
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Bevel1: TBevel
+    Left = 0
+    Top = 0
+    Width = 914
+    Height = 65
+    Align = alTop
+  end
+  object pgConsultaUsuario: TPageControl
+    Left = 0
+    Top = 65
+    Width = 914
+    Height = 446
+    ActivePage = tabDetalheConsulta
+    Align = alClient
+    TabOrder = 0
+    ExplicitHeight = 383
+    object tabConsultaUsuario: TTabSheet
+      Caption = 'tabConsultaUsuario'
+      TabVisible = False
+      ExplicitHeight = 373
+      object SpeedButton1: TSpeedButton
+        Left = 69
+        Top = 154
+        Width = 121
+        Height = 22
+        Caption = 'Pesquisar'
+        OnClick = SpeedButton1Click
+      end
+      object Label1: TLabel
+        Left = 0
+        Top = 0
+        Width = 906
+        Height = 42
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Consulta de Usu'#225'rio'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -37
+        Font.Name = 'Microsoft Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ExplicitWidth = 358
+      end
+      object SpeedButton2: TSpeedButton
+        Left = 288
+        Top = 154
+        Width = 121
+        Height = 22
+        Caption = 'Atualizar'
+        OnClick = SpeedButton2Click
+      end
+      object rdConsultaUsuario: TRadioGroup
+        Left = 69
+        Top = 62
+        Width = 340
+        Height = 49
+        Caption = 'Tipo da consulta'
+        Columns = 3
+        ItemIndex = 0
+        Items.Strings = (
+          '&C'#243'digo'
+          '&Nome'
+          '&Login')
+        TabOrder = 0
+        OnClick = rdConsultaUsuarioClick
+      end
+      object editConsultaUsuario: TEdit
+        Left = 69
+        Top = 125
+        Width = 121
+        Height = 21
+        TabOrder = 1
+        Text = 'editConsultaUsuario'
+        OnChange = editConsultaUsuarioChange
+      end
+    end
+    object tabDetalheConsulta: TTabSheet
+      Caption = 'tabDetalheConsulta'
+      ImageIndex = 1
+      TabVisible = False
+      ExplicitHeight = 373
+      object Bevel2: TBevel
+        Left = 0
+        Top = 373
+        Width = 906
+        Height = 63
+        Align = alBottom
+        ExplicitTop = 379
+      end
+      object Label2: TLabel
+        Left = 0
+        Top = 0
+        Width = 906
+        Height = 42
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Detalhe da Consulta'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -37
+        Font.Name = 'Microsoft Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ExplicitWidth = 358
+      end
+      object spConsultaDeFornecedor_Imprimir: TSpeedButton
+        Left = 764
+        Top = 397
+        Width = 121
+        Height = 22
+        Caption = 'Imprimir'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object spConsultaDeFornecedor_Voltar: TSpeedButton
+        Left = 24
+        Top = 397
+        Width = 121
+        Height = 22
+        Caption = 'Voltar'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        OnClick = spConsultaDeFornecedor_VoltarClick
+      end
+      object dbDetalheCulsulta: TDBGrid
+        Left = 0
+        Top = 42
+        Width = 906
+        Height = 331
+        Align = alClient
+        DataSource = dtConsultaUsuario
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+      end
+      object dbNavConsultaCliente: TDBNavigator
+        Left = 344
+        Top = 397
+        Width = 216
+        Height = 22
+        DataSource = dtConsultaUsuario
+        VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
+        Flat = True
+        Ctl3D = True
+        Hints.Strings = (
+          'Primeiro resgistro'
+          'Pr'#243'ximo registro'
+          #218'ltimo registro'
+          'Registro anterior'
+          'Insert record'
+          'Delete record'
+          'Edit record'
+          'Post edit'
+          'Cancel edit'
+          'Refresh data'
+          'Apply updates'
+          'Cancel updates')
+        ParentCtl3D = False
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 1
+      end
+    end
+  end
+  object fdQueryConsultaUsuario: TFDQuery
+    Connection = dtmConexao.FD_Conexao
+    SQL.Strings = (
+      'select * from tblUsuario')
+    Left = 24
+    Top = 72
+  end
+  object dtConsultaUsuario: TDataSource
+    DataSet = fdQueryConsultaUsuario
+    Left = 168
+    Top = 72
+  end
+end

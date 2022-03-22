@@ -1,0 +1,139 @@
+object frmMenu: TfrmMenu
+  Left = 0
+  Top = 0
+  Caption = 'D'#39'televendas'
+  ClientHeight = 491
+  ClientWidth = 914
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = MainMenu1
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 914
+    Height = 113
+    Align = alTop
+    TabOrder = 0
+    object spBtMenuPedido: TSpeedButton
+      Left = 16
+      Top = 18
+      Width = 97
+      Height = 73
+      Caption = 'Cadastro pedidos'
+      OnClick = spBtMenuPedidoClick
+    end
+    object spBtMenuCadastroCliente: TSpeedButton
+      Left = 144
+      Top = 18
+      Width = 97
+      Height = 73
+      Caption = 'Cadastro Cliente'
+      OnClick = spBtMenuCadastroClienteClick
+    end
+    object SpeedButton3: TSpeedButton
+      Left = 272
+      Top = 18
+      Width = 97
+      Height = 73
+      Caption = 'Agenda'
+      OnClick = SpeedButton3Click
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 428
+    Width = 914
+    Height = 63
+    Align = alBottom
+    TabOrder = 1
+    object stBarMenu: TStatusBar
+      Left = 1
+      Top = 40
+      Width = 912
+      Height = 22
+      Color = clActiveBorder
+      Panels = <
+        item
+          Width = 100
+        end
+        item
+          Width = 700
+        end
+        item
+          Width = 10
+        end>
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 816
+    Top = 384
+    object Cadastro1: TMenuItem
+      Caption = 'Cadastros'
+      object Clientes1: TMenuItem
+        Caption = 'Cliente'
+        OnClick = Clientes1Click
+      end
+      object Fornecedor1: TMenuItem
+        Caption = 'Fornecedor'
+        OnClick = Fornecedor1Click
+      end
+      object Produtos1: TMenuItem
+        Caption = 'Produto'
+        OnClick = Produtos1Click
+      end
+      object Usurio1: TMenuItem
+        Caption = 'Pedidos'
+        OnClick = Usurio1Click
+      end
+      object Pedidos1: TMenuItem
+        Caption = 'Usu'#225'rio'
+        OnClick = Pedidos1Click
+      end
+    end
+    object Cunsultas1: TMenuItem
+      Caption = '&Cunsultas'
+      object Clientes2: TMenuItem
+        Caption = 'Cliente'
+        OnClick = Clientes2Click
+      end
+      object Fornecedores1: TMenuItem
+        Caption = 'Fornecedore'
+        OnClick = Fornecedores1Click
+      end
+      object Produtos2: TMenuItem
+        Caption = 'Produto'
+        OnClick = Produtos2Click
+      end
+      object Pedidos2: TMenuItem
+        Caption = 'Pedido'
+        OnClick = Pedidos2Click
+      end
+      object Usurio2: TMenuItem
+        Caption = 'Usu'#225'rio'
+        OnClick = Usurio2Click
+      end
+    end
+    object Utilitrios1: TMenuItem
+      Caption = '&Utilit'#225'rios'
+      object Calculadora1: TMenuItem
+        Caption = 'Calculadora'
+      end
+      object Agenda1: TMenuItem
+        Caption = 'Agenda'
+        OnClick = Agenda1Click
+      end
+    end
+  end
+  object TmMenu: TTimer
+    OnTimer = TmMenuTimer
+    Left = 872
+    Top = 384
+  end
+end

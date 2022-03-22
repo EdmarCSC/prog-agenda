@@ -1,0 +1,296 @@
+object frmCadastroPedidos: TfrmCadastroPedidos
+  Left = 0
+  Top = 0
+  Caption = 'Cadastro de pedidos'
+  ClientHeight = 518
+  ClientWidth = 914
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 238
+    Top = 131
+    Width = 36
+    Height = 13
+    Caption = ' Cliente'
+  end
+  object Label2: TLabel
+    Left = 574
+    Top = 131
+    Width = 39
+    Height = 13
+    Caption = 'Contato'
+  end
+  object spBt_NovoPedido: TSpeedButton
+    Left = 816
+    Top = 194
+    Width = 49
+    Height = 37
+    Caption = 'Novo'
+    OnClick = spBt_NovoPedidoClick
+  end
+  object spBt_CancelarPedido: TSpeedButton
+    Left = 816
+    Top = 262
+    Width = 49
+    Height = 37
+    Caption = 'Add item'
+    OnClick = spBt_CancelarPedidoClick
+  end
+  object spBt_SalvarPedidp: TSpeedButton
+    Left = 816
+    Top = 329
+    Width = 49
+    Height = 37
+    Caption = 'Salvar'
+    OnClick = spBt_SalvarPedidpClick
+  end
+  object Label3: TLabel
+    Left = 128
+    Top = 175
+    Width = 75
+    Height = 13
+    Caption = 'Itens do Pedido'
+  end
+  object Label4: TLabel
+    Left = 280
+    Top = 70
+    Width = 369
+    Height = 42
+    Caption = 'Cadastro de Pedidos'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -37
+    Font.Name = 'Microsoft Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 128
+    Top = 131
+    Width = 33
+    Height = 13
+    Caption = 'C'#243'digo'
+  end
+  object dbGridItem_Pedido: TDBGrid
+    Left = 128
+    Top = 194
+    Width = 639
+    Height = 303
+    Color = clMoneyGreen
+    DataSource = dtItemPedidos
+    DrawingStyle = gdsGradient
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'CODPEDIDO'
+        Title.Caption = 'C'#243'digo pedido'
+        Width = 87
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CODPRODUTO'
+        Title.Caption = 'C'#243'digo Produto'
+        Width = 91
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DESCRICAO'
+        Title.Caption = 'Descri'#231#227'o'
+        Width = 332
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'QUANTIDADE'
+        Title.Caption = 'Quantidade'
+        Width = 63
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'VALOR'
+        Title.Caption = 'Valor'
+        Width = 128
+        Visible = True
+      end>
+  end
+  object dbEditCodigoClientePedido: TDBEdit
+    Left = 128
+    Top = 150
+    Width = 68
+    Height = 21
+    BiDiMode = bdLeftToRight
+    DataField = 'CODPEDIDO'
+    DataSource = dtCadastroPedidos
+    ParentBiDiMode = False
+    ReadOnly = True
+    TabOrder = 1
+  end
+  object dbEditNomeClientePedido: TDBEdit
+    Left = 238
+    Top = 150
+    Width = 299
+    Height = 21
+    DataField = 'NOMECLIENTE'
+    DataSource = dtCadastroPedidos
+    TabOrder = 2
+  end
+  object dbEditContatoClientePedido: TDBEdit
+    Left = 574
+    Top = 150
+    Width = 121
+    Height = 21
+    DataField = 'CONTATO'
+    DataSource = dtCadastroPedidos
+    TabOrder = 3
+    OnExit = dbEditContatoClientePedidoExit
+  end
+  object fdQueryCadastroPedidos: TFDQuery
+    AutoCalcFields = False
+    Filtered = True
+    CachedUpdates = True
+    Connection = dtmConexao.FD_Conexao
+    SQL.Strings = (
+      'select * from tblpedidos')
+    Left = 136
+    Top = 16
+    object fdQueryCadastroPedidosCODPEDIDO: TIntegerField
+      FieldName = 'CODPEDIDO'
+      Origin = 'CODPEDIDO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object fdQueryCadastroPedidosNOMECLIENTE: TStringField
+      FieldName = 'NOMECLIENTE'
+      Origin = 'NOMECLIENTE'
+      Required = True
+      Size = 100
+    end
+    object fdQueryCadastroPedidosDTCADASTRO: TStringField
+      FieldName = 'DTCADASTRO'
+      Origin = 'DTCADASTRO'
+    end
+    object fdQueryCadastroPedidosCONTATO: TStringField
+      FieldName = 'CONTATO'
+      Origin = 'CONTATO'
+    end
+  end
+  object fdQueryItemPedidos: TFDQuery
+    CachedUpdates = True
+    MasterFields = 'CODPEDIDO'
+    DetailFields = 'CODPEDIDO'
+    Connection = dtmConexao.FD_Conexao
+    FetchOptions.AssignedValues = [evAutoClose, evUnidirectional, evLiveWindowParanoic, evDetailCascade]
+    FetchOptions.AutoClose = False
+    FetchOptions.LiveWindowParanoic = False
+    FetchOptions.DetailCascade = True
+    SQL.Strings = (
+      'select * from TBLITEM_PEDIDO')
+    Left = 752
+    Top = 8
+  end
+  object fdTableCadastroPedidos: TFDTable
+    IndexFieldNames = 'CODPEDIDO'
+    DetailFields = 'CODPEDIDO'
+    Connection = dtmConexao.FD_Conexao
+    Transaction = dtmConexao.FDTransaction1
+    UpdateTransaction = dtmConexao.FDTransaction1
+    FetchOptions.AssignedValues = [evAutoClose, evUnidirectional, evLiveWindowParanoic, evDetailCascade, evLiveWindowFastFirst, evDetailServerCascade]
+    FetchOptions.LiveWindowParanoic = False
+    UpdateOptions.AssignedValues = [uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    UpdateOptions.UpdateTableName = 'TBLPEDIDOS'
+    UpdateOptions.AutoIncFields = 'CODPEDIDO'
+    TableName = 'TBLPEDIDOS'
+    Left = 264
+    Top = 16
+    object fdTableCadastroPedidosCODPEDIDO: TIntegerField
+      AutoGenerateValue = arAutoInc
+      FieldName = 'CODPEDIDO'
+      Origin = 'CODPEDIDO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object fdTableCadastroPedidosNOMECLIENTE: TStringField
+      FieldName = 'NOMECLIENTE'
+      Origin = 'NOMECLIENTE'
+      Required = True
+      Size = 100
+    end
+    object fdTableCadastroPedidosDTCADASTRO: TStringField
+      FieldName = 'DTCADASTRO'
+      Origin = 'DTCADASTRO'
+    end
+    object fdTableCadastroPedidosCONTATO: TStringField
+      FieldName = 'CONTATO'
+      Origin = 'CONTATO'
+    end
+  end
+  object dtItemPedidos: TDataSource
+    DataSet = fdTableItem_Pedidos
+    Left = 744
+    Top = 80
+  end
+  object fdTableItem_Pedidos: TFDTable
+    IndexFieldNames = 'CODPEDIDO'
+    MasterSource = dtCadastroPedidos
+    MasterFields = 'CODPEDIDO'
+    DetailFields = 'CODPEDIDO'
+    Connection = dtmConexao.FD_Conexao
+    Transaction = dtmConexao.FDTransaction1
+    UpdateTransaction = dtmConexao.FDTransaction1
+    FetchOptions.AssignedValues = [evAutoClose, evUnidirectional, evLiveWindowParanoic, evDetailCascade, evDetailServerCascade]
+    FetchOptions.AutoClose = False
+    FetchOptions.LiveWindowParanoic = False
+    FormatOptions.AssignedValues = [fvQuoteIdentifiers]
+    FormatOptions.QuoteIdentifiers = True
+    UpdateOptions.UpdateTableName = 'TBLITEM_PEDIDO'
+    TableName = 'TBLITEM_PEDIDO'
+    Left = 584
+    Top = 8
+    object fdTableItem_PedidosCODPEDIDO: TIntegerField
+      AutoGenerateValue = arAutoInc
+      FieldName = 'CODPEDIDO'
+      Origin = 'CODPEDIDO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object fdTableItem_PedidosDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Size = 100
+    end
+    object fdTableItem_PedidosQUANTIDADE: TIntegerField
+      FieldName = 'QUANTIDADE'
+      Origin = 'QUANTIDADE'
+      Required = True
+    end
+    object fdTableItem_PedidosVALOR: TStringField
+      FieldName = 'VALOR'
+      Origin = 'VALOR'
+    end
+    object fdTableItem_PedidosCODPRODUTO: TIntegerField
+      FieldName = 'CODPRODUTO'
+      Origin = 'CODPRODUTO'
+    end
+  end
+  object dtCadastroPedidos: TDataSource
+    DataSet = fdTableCadastroPedidos
+    Left = 136
+    Top = 64
+  end
+end

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/11/13 13:13:17.000.419,=C:\sisD_Televendas\projeto\progeto\Unit1.pas</Transaction>
+    <Transaction>2020/11/13 13:17:44.000.757,C:\sisD_Televendas\projeto\relatorios\uClienteRelatorio.pas=C:\sisD_Televendas\projeto\progeto\Unit1.pas</Transaction>
+    <Transaction>2020/11/13 13:21:40.000.519,C:\sisD_Televendas\projeto\relatorios\uClienteRelatorio.pas=</Transaction>
+    <Transaction>2020/11/13 13:22:39.000.786,=C:\sisD_Televendas\projeto\progeto\Unit1.pas</Transaction>
+    <Transaction>2020/11/13 13:24:57.000.942,C:\sisD_Televendas\projeto\relatorios\uRel_Cliente.pas=C:\sisD_Televendas\projeto\progeto\Unit1.pas</Transaction>
+    <Transaction>2020/11/13 13:24:57.000.942,C:\sisD_Televendas\projeto\relatorios\uRel_Cliente.dfm=C:\sisD_Televendas\projeto\progeto\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

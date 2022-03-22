@@ -1,0 +1,16 @@
+object dtmConexao: TdtmConexao
+  OldCreateOrder = False
+  Height = 376
+  Width = 542
+  object FD_Conexao: TFDConnection
+    Params.Strings = (
+      'Database=C:\sisD_Televendas\projeto\bancoDeDados\TLVENDASDG.FDB'
+      'User_Name=SYSDBA'
+      'Password=masterkey'
+      'CharacterSet=WIN1252'
+      'DriverID=FB')
+    LoginPrompt = False
+    Left = 40
+    Top = 24
+  end
+end

@@ -1,0 +1,15 @@
+unit uClienteRelatorio;
+
+interface
+
+uses
+   frxClass, frxExportBaseDialog, frxExportPDF, frxDBSet;
+
+type
+   frxReport1: TfrxReport;
+   frxDB_RelatorioCliente: TfrxDBDataset;
+   frxPDFExport1: TfrxPDFExport;
+
+implementation
+
+end.

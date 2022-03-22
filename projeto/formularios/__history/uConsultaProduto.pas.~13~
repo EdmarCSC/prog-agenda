@@ -1,0 +1,100 @@
+unit uConsultaProduto;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.DBCtrls,
+  Vcl.Buttons, Vcl.StdCtrls, Data.DB, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TfrmConsultaProduto = class(TForm)
+    Bevel1: TBevel;
+    Bevel2: TBevel;
+    spConsultaDeFornecedor_Voltar: TSpeedButton;
+    dbNavConsultaCliente: TDBNavigator;
+    spConsultaDeFornecedor_Imprimir: TSpeedButton;
+    pgC_ConsultaProduto: TPageControl;
+    TabConsultProduto: TTabSheet;
+    TabDetalheProduto: TTabSheet;
+    Label1: TLabel;
+    rdConsultaCliente: TRadioGroup;
+    editConsultaProduto: TEdit;
+    spBtConsultaClientePesquisa: TSpeedButton;
+    Label2: TLabel;
+    DBGrid1: TDBGrid;
+    fdQuaryConsultaProduto: TFDQuery;
+    dtConsultaProduto: TDataSource;
+    SpeedButton1: TSpeedButton;
+    procedure editConsultaProdutoChange(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure spBtConsultaClientePesquisaClick(Sender: TObject);
+  private
+    { Private declarations }
+    itemPesqFornecedor, pesq: string;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmConsultaProduto: TfrmConsultaProduto;
+
+implementation
+
+{$R *.dfm}
+
+uses uDT_Conexao;
+
+procedure TfrmConsultaProduto.editConsultaProdutoChange(Sender: TObject);
+begin
+        //:= StrToInt(editConsulta.Text);
+
+               // Condição para verificar se a pesquisa será realizada por um valor integer ou string.
+        if rdConsultaCliente.ItemIndex = 0 or  2 or  3 then
+          begin   // integer
+
+            // Inserindo SQL no DataSet para pesquisa.
+            fdQuaryConsultaProduto.Close;
+            fdQuaryConsultaProduto.SQL.Clear;
+             pesq := 'select * from TBLFORNECEDOR where '+ itemPesqFornecedor +' = '+chr(39)+editConsultaProduto.Text+chr(39);
+
+            //  variavel recebendo instrução que selecionará a pesquisa feita pelo usuário no Edit.
+            fdQuaryConsultaProduto.SQL.Add(pesq);
+            fdQuaryConsultaProduto.Open;
+          end
+        else
+          begin   // string
+
+             // Inserindo SQL no DataSet para pesquisa.
+            fdQuaryConsultaProduto.Close;
+            fdQuaryConsultaProduto.SQL.Clear;
+            pesq := 'select * from TBLFORNECEDOR where '+itemPesqFornecedor+' like '+chr(39)+editConsultaProduto.Text+'%'+chr(39);
+
+            //  variavel recebendo instrução que selecionará a pesquisa feita pelo usuário no Edit.
+            fdQuaryConsultaProduto.SQL.Add(pesq);
+            fdQuaryConsultaProduto.Open;
+          end;
+end;
+
+
+procedure TfrmConsultaProduto.spBtConsultaClientePesquisaClick(Sender: TObject);
+begin
+        // Ativando TabDetalhe para apresentar as informações de pesquisa.
+        pgC_ConsultaProduto.ActivePage := TabDetalheProduto;
+end;
+
+procedure TfrmConsultaProduto.SpeedButton1Click(Sender: TObject);
+begin
+         // Executando um consulta detodos os clientes.
+        fdQuaryConsultaProduto.sql.Clear;
+        fdQuaryConsultaProduto.sql.Add('Commit');
+        pgC_ConsultaProduto.ActivePage := TabDetalheProduto;
+        fdQuaryConsultaProduto.sql.Clear;
+        fdQuaryConsultaProduto.sql.Add('select * from tblfornecedor');
+        fdQuaryConsultaProduto.Open;
+end;
+
+end.

@@ -1,0 +1,100 @@
+unit uCadastroPedidos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls,
+  Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, FireDAC.UI.Intf, FireDAC.VCLUI.Wait,
+  FireDAC.Phys.FBDef, FireDAC.Phys, FireDAC.Phys.IBBase, FireDAC.Phys.FB,
+  FireDAC.Comp.UI;
+
+type
+  TfrmCadastroPedidos = class(TForm)
+    Label1: TLabel;
+    dbEditNomeClentePedido: TDBEdit;
+    dtCadastroPedidos: TDataSource;
+    Label2: TLabel;
+    dbEditContatoClientePedido: TDBEdit;
+    dbItemPedidos: TDBGrid;
+    spBt_NovoPedido: TSpeedButton;
+    spBt_CancelarPedido: TSpeedButton;
+    spBt_SalvarPedidp: TSpeedButton;
+    Label3: TLabel;
+    Label4: TLabel;
+    fdQueryCadastroPedidos: TFDQuery;
+    fdQueryItemPedidos: TFDQuery;
+    procedure spBt_NovoPedidoClick(Sender: TObject);
+    procedure dbEditContatoClientePedidoExit(Sender: TObject);
+    procedure spBt_SalvarPedidpClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCadastroPedidos: TfrmCadastroPedidos;
+
+implementation
+
+{$R *.dfm}
+
+uses uDT_Conexao;
+
+procedure TfrmCadastroPedidos.dbEditContatoClientePedidoExit(Sender: TObject);
+begin
+          // Enviandos dados para a DB.
+            fdTableCadastroPedidos.Post;
+
+         // Setando (posicionando cursor do mouse) no Edit_Nome
+          dbItemPedidos.SetFocus;
+
+         // Abrindo tabela para inserir dados.
+          fdTableItemDoPedido.Open;
+
+          // Ativando modo de inserção Table Cadastro Pedidos.
+          fdTableItemDoPedido.Append;
+
+end;
+
+procedure TfrmCadastroPedidos.spBt_NovoPedidoClick(Sender: TObject);
+begin
+         // Abrindo tabela para inserir dados.
+         fdTableCadastroPedidos.Open;
+
+        // Ativando modo de inserção Table Cadastro Pedidos.
+        fdTableCadastroPedidos.Append;
+        fdTableCadastroPedidos.Insert;
+
+        // Setando dbEdit_NomeUsuario.
+        dbEditNomeClentePedido.SetFocus;
+
+end;
+
+procedure TfrmCadastroPedidos.spBt_SalvarPedidpClick(Sender: TObject);
+begin
+        // salvar
+
+    // Enviandos dados para a DB.
+    fdTableCadastroPedidos.Post;
+    fdTableCadastroPedidos.ApplyUpdates(0);
+    fdTableCadastroPedidos.CommitUpdates;
+
+    // Fechando a tabela.
+    fdTableCadastroPedidos.close;
+
+    // Fechando a tabela.
+    //fdTableCadastroPedidos.Close;
+
+    // Setando (posicionando cursor do mouse) no Edit_Nome
+    //dbEdit_Nome.SetFocus;
+
+    // inserindo data ao resgistro.
+
+end;
+
+end.

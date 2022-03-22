@@ -1,0 +1,145 @@
+unit uConsultaCliente;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.ComCtrls, Vcl.StdCtrls,
+  Vcl.ExtCtrls, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, Vcl.DBCtrls;
+
+type
+  TfrmConsultaCliente = class(TForm)
+    pgConsultaCliente: TPageControl;
+    TabConsulta: TTabSheet;
+    TabDetalhe: TTabSheet;
+    fdQueryConsultaClientes: TFDQuery;
+    editConsulta: TEdit;
+    bvCabecalho: TBevel;
+    rdConsultaCliente: TRadioGroup;
+    Label1: TLabel;
+    dbDetalheConsulta: TDBGrid;
+    dtConsultaCliente: TDataSource;
+    spBtConsultaClientePesquisa: TSpeedButton;
+    Label2: TLabel;
+    spBt_Voltar: TSpeedButton;
+    dbNavConsultaCliente: TDBNavigator;
+    spBt_Imprimir: TSpeedButton;
+    bvRodape: TBevel;
+    btConsultaTodosClientes: TButton;
+    procedure spBtConsultaClientePesquisaClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btConsultaTodosClientesClick(Sender: TObject);
+    procedure spBt_VoltarClick(Sender: TObject);
+    procedure editConsultaChange(Sender: TObject);
+    procedure rdConsultaClienteExit(Sender: TObject);
+  private
+    { Private declarations }
+    // Variavel para armazenar condição caso do RadioGroup
+    itemPesqCliente: string;
+
+    // Vadiábel que recebera a instrução SQL para cunsulta no DB.
+    pesq: string;
+
+   // pesqInt: Integer;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmConsultaCliente: TfrmConsultaCliente;
+
+implementation
+
+{$R *.dfm}
+
+uses uDT_Conexao;
+
+procedure TfrmConsultaCliente.btConsultaTodosClientesClick(Sender: TObject);
+begin
+        fdQueryConsultaClientes.Close;
+        fdQueryConsultaClientes.sql.Clear;
+        fdQueryConsultaClientes.sql.Add('Commit');
+        pgConsultaCliente.ActivePage := TabDetalhe;
+        fdQueryConsultaClientes.sql.Clear;
+        fdQueryConsultaClientes.sql.Add('select * from tblclientes where NOMECLIENTE = "edmar" ');
+        fdQueryConsultaClientes.Open;
+
+end;
+
+procedure TfrmConsultaCliente.editConsultaChange(Sender: TObject);
+var
+  pesqConsulta: Integer;
+
+begin
+        pesqConsulta:= StrToInt(editConsulta.Text);
+
+               // Condição para verificar se a pesquisa será realizada por um valor integer ou string.
+        if rdConsultaCliente.ItemIndex = 0 then
+          begin   // integer
+
+            // Inserindo SQL no DataSet para pesquisa.
+            fdQueryConsultaClientes.Close;
+            fdQueryConsultaClientes.SQL.Clear;
+            pesq := 'select * from TBLCLIENTES where '+itemPesqCliente+  '=' pesqConsulta ;
+
+            //  variavel recebendo instrução que selecionará a pesquisa feita pelo usuário no Edit.
+            fdQueryConsultaClientes.SQL.Add(pesq);
+            fdQueryConsultaClientes.Open;
+          end
+        else
+          begin   // string
+
+             // Inserindo SQL no DataSet para pesquisa.
+            fdQueryConsultaClientes.Close;
+            fdQueryConsultaClientes.SQL.Clear;
+            pesq := 'select * from TBLCLIENTES where '+itemPesqCliente+' like '+chr(39)+editConsulta.Text+'%'+chr(39);
+
+            //  variavel recebendo instrução que selecionará a pesquisa feita pelo usuário no Edit.
+            fdQueryConsultaClientes.SQL.Add(pesq);
+            fdQueryConsultaClientes.Open;
+          end;
+end;
+
+procedure TfrmConsultaCliente.FormShow(Sender: TObject);
+begin
+        // Setando PageControl na primeira página.
+        pgConsultaCliente.ActivePage := TabConsulta;
+
+        // Condição 'se' o dataset estiver aberto, é instruido a fechar.
+        if fdQueryConsultaClientes.Active = False then
+           fdQueryConsultaClientes.Active := True;
+
+end;
+
+procedure TfrmConsultaCliente.rdConsultaClienteExit(Sender: TObject);
+begin
+
+    // Condição caso para estipular por qual campo da tabela será execultada a
+    //  a consulta com o Edit.
+    case rdConsultaCliente.ItemIndex of
+        0: itemPesqCliente := 'CODCLIENTE';
+        1: itemPesqCliente := 'NOMECLIENTE';
+        2: itemPesqCliente := 'CPF';
+        3: itemPesqCliente := 'CNPJ';
+    end;
+end;
+
+procedure TfrmConsultaCliente.spBtConsultaClientePesquisaClick(Sender: TObject);
+begin
+      // Ativando TabDetalhe para apresentar as informações de pesquisa.
+      pgConsultaCliente.ActivePage := TabDetalhe;
+
+
+end;
+
+procedure TfrmConsultaCliente.spBt_VoltarClick(Sender: TObject);
+begin
+      fdQueryConsultaClientes.Close;
+      pgConsultaCliente.ActivePage := TabConsulta;
+      editConsulta.Clear;
+end;
+
+end.

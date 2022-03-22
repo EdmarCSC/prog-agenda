@@ -1,0 +1,227 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Consulta de pedidos'
+  ClientHeight = 512
+  ClientWidth = 914
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Bevel1: TBevel
+    Left = 0
+    Top = 0
+    Width = 914
+    Height = 59
+    Align = alTop
+  end
+  object PageControl1: TPageControl
+    Left = 0
+    Top = 59
+    Width = 914
+    Height = 453
+    ActivePage = TabSheet2
+    Align = alClient
+    TabOrder = 0
+    ExplicitTop = 107
+    ExplicitHeight = 399
+    object TabSheet1: TTabSheet
+      Caption = 'TabSheet1'
+      TabVisible = False
+      ExplicitLeft = 8
+      ExplicitHeight = 389
+      object Bevel2: TBevel
+        Left = 0
+        Top = 395
+        Width = 906
+        Height = 48
+        Align = alBottom
+        ExplicitTop = 336
+      end
+      object spBtConsultaClientePesquisa: TSpeedButton
+        Left = 43
+        Top = 155
+        Width = 121
+        Height = 22
+        Caption = 'Pesquisar'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label1: TLabel
+        Left = 0
+        Top = 0
+        Width = 906
+        Height = 42
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Cosnulta de pedidos'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -37
+        Font.Name = 'Microsoft Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ExplicitWidth = 361
+      end
+      object rdConsultaCliente: TRadioGroup
+        Left = 43
+        Top = 65
+        Width = 370
+        Height = 49
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Caption = 'Consulta'
+        Color = clWhite
+        Columns = 5
+        Ctl3D = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ItemIndex = 0
+        Items.Strings = (
+          '&C'#243'digo'
+          '&Nome'
+          '&CPF'
+          '&CNPJ'
+          '&Todos')
+        ParentBackground = False
+        ParentColor = False
+        ParentCtl3D = False
+        ParentFont = False
+        TabOrder = 0
+      end
+      object editConsulta: TEdit
+        Left = 43
+        Top = 125
+        Width = 121
+        Height = 21
+        Color = clCream
+        TabOrder = 1
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'TabSheet2'
+      ImageIndex = 1
+      TabVisible = False
+      ExplicitTop = 24
+      ExplicitHeight = 376
+      object spBt_Voltar: TSpeedButton
+        Left = 19
+        Top = 412
+        Width = 121
+        Height = 22
+        Align = alCustom
+        Caption = 'Voltar'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object spBt_Imprimir: TSpeedButton
+        Left = 769
+        Top = 412
+        Width = 121
+        Height = 22
+        Caption = 'Imprimir'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object bvRodape: TBevel
+        Left = 0
+        Top = 393
+        Width = 906
+        Height = 50
+        Align = alBottom
+        ExplicitTop = 392
+      end
+      object Label2: TLabel
+        Left = 0
+        Top = 0
+        Width = 906
+        Height = 42
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Detalhe de pedidos'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -37
+        Font.Name = 'Microsoft Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ExplicitWidth = 341
+      end
+      object dbNavConsultaCliente: TDBNavigator
+        Left = 336
+        Top = 412
+        Width = 216
+        Height = 25
+        VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
+        Flat = True
+        Ctl3D = True
+        Hints.Strings = (
+          'Primeiro resgistro'
+          'Pr'#243'ximo registro'
+          #218'ltimo registro'
+          'Registro anterior'
+          'Insert record'
+          'Delete record'
+          'Edit record'
+          'Post edit'
+          'Cancel edit'
+          'Refresh data'
+          'Apply updates'
+          'Cancel updates')
+        ParentCtl3D = False
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 0
+      end
+      object DBGrid1: TDBGrid
+        Left = 0
+        Top = 42
+        Width = 906
+        Height = 351
+        Align = alClient
+        DataSource = dtCunsultaPedidos
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+      end
+    end
+  end
+  object fdQueryCunsultaPedidos: TFDQuery
+    Active = True
+    Connection = dtmConexao.FD_Conexao
+    SQL.Strings = (
+      'select * from tblpedidos')
+    Left = 32
+    Top = 56
+  end
+  object dtCunsultaPedidos: TDataSource
+    DataSet = fdQueryCunsultaPedidos
+    Left = 176
+    Top = 56
+  end
+end

@@ -1,0 +1,39 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Consulta de pedidos'
+  ClientHeight = 511
+  ClientWidth = 914
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Bevel1: TBevel
+    Left = 0
+    Top = 0
+    Width = 914
+    Height = 65
+    Align = alTop
+  end
+  object Label1: TLabel
+    Left = 0
+    Top = 65
+    Width = 914
+    Height = 42
+    Align = alTop
+    Alignment = taCenter
+    Caption = 'Cosnulta de usu'#225'rio'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -37
+    Font.Name = 'Microsoft Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    ExplicitWidth = 352
+  end
+end

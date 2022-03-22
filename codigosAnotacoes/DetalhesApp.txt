@@ -1,0 +1,94 @@
+Desiging
+Cor Bavel:
+	$00808040
+Cor Body:
+	$00808040, clAppWorkSpace
+Edits:
+	BevelLinner: bvLowered
+	BevelKind: bkTile
+-----------------------------------------------------------------
+
+Configuração formularios
+	width  -> 930
+	heigth -> 550
+-----------------------------------------------------------------
+
+Posições:
+	Label titulo principal
+		left  -> 280  heigth -> 42
+		Top   -> 70   width -> 357 	
+	Edit_Consulta:
+		top -> 125
+		left -> 64
+	RadioGroub_Consulta:
+		top -> 65
+		left -> 64
+	ButtonConsultaPage1:
+		top -> 155
+		left -> 64
+	Bevel:
+		left/top -> 0
+		heigth -> 65
+		width -> 914
+		pFooter_C_Fornecedor // Nome
+	DBGred:
+		clMoneyGreen // color
+		
+		DrawingStyle > gdsGradient	
+		
+		
+-----------------------------------------------------------------
+
+Botões (Salvar, Cancelar, Editar)
+	width  -> 49
+	heigth -> 37
+Botões (Proximo, pesquisar, imprimir e voltar)
+	width -> 121
+	heigth -> 22
+RadioGroubConsulta
+	width -> 370
+	heigth -> 49
+		(Itens radioGroub &Código
+			&Nome, &CPF, &CNPJ, &Todos)
+
+	
+	Códigos:
+		   // salvar
+
+    // Enviandos dados para a DB.
+    fdTableCadastroCliente.Post;
+
+    // Fechando a tabela.
+    fdTableCadastroCliente.Close;
+
+    // Setando (posicionando cursor do mouse) no Edit_Nome
+    dbEdit_Nome.SetFocus;
+
+	
+		   // Editar
+
+    // Abrindo a tabela para inserir dados.
+    fdTableCadastroCliente.Open;
+
+    // Ativando modo de inserção
+    fdTableCadastroCliente.Append;
+
+
+		    // Cancelar
+
+    // Cancelando o cadastro.
+    fdTableCadastroCliente.Cancel;
+
+    // fechando a tabela.
+    fdTableCadastroCliente.Close;
+
+     // Setando (posicionando cursor do mouse) no Edit_Nome
+    dbEdit_Nome.SetFocus;
+
+	
+   fdConsultaClientes.Close;
+    pgConsultaCliente.ActivePage := TabConsulta;
+    editConsulta.SetFocus;
+
+	
+ 

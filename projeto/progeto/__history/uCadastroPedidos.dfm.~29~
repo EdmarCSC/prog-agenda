@@ -1,0 +1,144 @@
+object frmCadastroPedidos: TfrmCadastroPedidos
+  Left = 0
+  Top = 0
+  Caption = 'Cadastro de pedidos'
+  ClientHeight = 511
+  ClientWidth = 914
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 128
+    Top = 131
+    Width = 36
+    Height = 13
+    Caption = ' Cliente'
+    FocusControl = dbEditNomeClentePedido
+  end
+  object Label2: TLabel
+    Left = 464
+    Top = 131
+    Width = 39
+    Height = 13
+    Caption = 'Contato'
+    FocusControl = dbEditContatoClientePedido
+  end
+  object spBt_NovoPedido: TSpeedButton
+    Left = 816
+    Top = 194
+    Width = 49
+    Height = 37
+    Caption = 'Novo'
+    OnClick = spBt_NovoPedidoClick
+  end
+  object spBt_CancelarPedido: TSpeedButton
+    Left = 816
+    Top = 262
+    Width = 49
+    Height = 37
+    Caption = 'Cancelar'
+  end
+  object spBt_SalvarPedidp: TSpeedButton
+    Left = 816
+    Top = 329
+    Width = 49
+    Height = 37
+    Caption = 'Salvar'
+    OnClick = spBt_SalvarPedidpClick
+  end
+  object Label3: TLabel
+    Left = 128
+    Top = 175
+    Width = 75
+    Height = 13
+    Caption = 'Itens do Pedido'
+  end
+  object Label4: TLabel
+    Left = 280
+    Top = 70
+    Width = 369
+    Height = 42
+    Caption = 'Cadastro de Pedidos'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -37
+    Font.Name = 'Microsoft Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object dbEditNomeClentePedido: TDBEdit
+    Left = 128
+    Top = 147
+    Width = 300
+    Height = 21
+    DataField = 'NOMECLIENTE'
+    DataSource = dtCadastroPedidos
+    TabOrder = 0
+  end
+  object dbEditContatoClientePedido: TDBEdit
+    Left = 464
+    Top = 147
+    Width = 100
+    Height = 21
+    DataField = 'CONTATO'
+    DataSource = dtCadastroPedidos
+    TabOrder = 1
+    OnExit = dbEditContatoClientePedidoExit
+  end
+  object dbItemPedidos: TDBGrid
+    Left = 128
+    Top = 194
+    Width = 660
+    Height = 303
+    Color = clMoneyGreen
+    DataSource = dtCadastroPedidos
+    TabOrder = 2
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object dtCadastroPedidos: TDataSource
+    DataSet = fdQueryCadastroPedidos
+    Left = 88
+    Top = 72
+  end
+  object fdQueryCadastroPedidos: TFDQuery
+    Active = True
+    Connection = dtmConexao.FD_Conexao
+    SQL.Strings = (
+      'select * from tblpedidos')
+    Left = 136
+    Top = 16
+  end
+  object fdQueryItemPedidos: TFDQuery
+    CachedUpdates = True
+    MasterSource = dtCadastroPedidos
+    MasterFields = 'CODPEDIDO'
+    DetailFields = 'CODPEDIDO'
+    Connection = dtmConexao.FD_Conexao
+    SQL.Strings = (
+      'select * from TBLITEM_PEDIDO'
+      'where CODPEDIDO = :CODPEDIDO')
+    Left = 752
+    Top = 8
+    ParamData = <
+      item
+        Name = 'CODPEDIDO'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 2
+      end>
+  end
+  object FDTable1: TFDTable
+    Left = 408
+    Top = 32
+  end
+end

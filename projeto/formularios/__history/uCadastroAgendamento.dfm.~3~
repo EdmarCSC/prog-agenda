@@ -1,0 +1,132 @@
+object frmAgenda: TfrmAgenda
+  Left = 0
+  Top = 0
+  Caption = 'Agenda'
+  ClientHeight = 511
+  ClientWidth = 914
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 392
+    Top = 70
+    Width = 136
+    Height = 42
+    Caption = 'Agenda'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -37
+    Font.Name = 'Microsoft Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 100
+    Top = 152
+    Width = 89
+    Height = 13
+    Caption = 'DTAGENDAMENTO'
+    FocusControl = dbEditDataAgendamento
+  end
+  object Label3: TLabel
+    Left = 228
+    Top = 149
+    Width = 90
+    Height = 13
+    Caption = 'HRAGENDAMENTO'
+    FocusControl = dbEditHoraAgendamento
+  end
+  object Label4: TLabel
+    Left = 100
+    Top = 200
+    Width = 70
+    Height = 13
+    Caption = 'NOMECLIENTE'
+    FocusControl = dbEditNomeClienteAgendamento
+  end
+  object Label5: TLabel
+    Left = 428
+    Top = 197
+    Width = 49
+    Height = 13
+    Caption = 'CONTATO'
+    FocusControl = dbEditContatoAgendamento
+  end
+  object dbEditDataAgendamento: TDBEdit
+    Left = 100
+    Top = 165
+    Width = 100
+    Height = 21
+    DataField = 'DTAGENDAMENTO'
+    DataSource = dtCadastroAgendamento
+    TabOrder = 0
+  end
+  object dbEditHoraAgendamento: TDBEdit
+    Left = 228
+    Top = 165
+    Width = 100
+    Height = 21
+    DataField = 'HRAGENDAMENTO'
+    DataSource = dtCadastroAgendamento
+    TabOrder = 1
+  end
+  object dbEditNomeClienteAgendamento: TDBEdit
+    Left = 100
+    Top = 213
+    Width = 300
+    Height = 21
+    DataField = 'NOMECLIENTE'
+    DataSource = dtCadastroAgendamento
+    TabOrder = 2
+  end
+  object dbEditContatoAgendamento: TDBEdit
+    Left = 428
+    Top = 213
+    Width = 100
+    Height = 21
+    DataField = 'CONTATO'
+    DataSource = dtCadastroAgendamento
+    TabOrder = 3
+  end
+  object fdTableCadastroAgendamento: TFDTable
+    Active = True
+    Connection = dtmConexao.FD_Conexao
+    UpdateOptions.UpdateTableName = 'TBLAGENDA'
+    TableName = 'TBLAGENDA'
+    Left = 40
+    Top = 25
+    object fdTableCadastroAgendamentoDTAGENDAMENTO: TStringField
+      FieldName = 'DTAGENDAMENTO'
+      Origin = 'DTAGENDAMENTO'
+    end
+    object fdTableCadastroAgendamentoHRAGENDAMENTO: TStringField
+      FieldName = 'HRAGENDAMENTO'
+      Origin = 'HRAGENDAMENTO'
+    end
+    object fdTableCadastroAgendamentoNOMECLIENTE: TStringField
+      FieldName = 'NOMECLIENTE'
+      Origin = 'NOMECLIENTE'
+      Size = 100
+    end
+    object fdTableCadastroAgendamentoCONTATO: TStringField
+      FieldName = 'CONTATO'
+      Origin = 'CONTATO'
+    end
+    object fdTableCadastroAgendamentoASSUNTO: TStringField
+      FieldName = 'ASSUNTO'
+      Origin = 'ASSUNTO'
+      Size = 255
+    end
+  end
+  object dtCadastroAgendamento: TDataSource
+    DataSet = fdTableCadastroAgendamento
+    Left = 40
+    Top = 80
+  end
+end
