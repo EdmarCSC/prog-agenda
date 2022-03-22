@@ -1,2 +1,2 @@
-Prog-agenda foi um projeto desenvolvido para ajudar um amigo e lógico também para praticar consteúdo adiquírido em cursos e por meio de pesquisas ne web.
+Prog-agenda foi um projeto desenvolvido em Delphi 10.3 Rio, para ajudar um amigo e lógico também para praticar consteúdo adiquírido em cursos e por meio de pesquisas ne web.
 Se trata de u CRUD que permite ele gerar pedidos e emitir relatórios.  
